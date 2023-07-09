@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+  frontend:
+    build: .
+    image: frontend
+    container_name: FRONTEND
+    ports:
+      - "9090:9090"
+    networks:
+      - NETO
+  backend:
+    image: amouat/dnmonster
+    container_name: BACKEND
+    networks:
+      - NETO
+  redis:
+    image: redis
+    container_name: REDIS
+    networks:
+      - NETO
+networks:
+  NETO:
+    driver: bridge
